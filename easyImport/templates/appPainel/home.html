@@ -1,0 +1,109 @@
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
+  </head><body>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <ul class="nav nav-tabs">
+              <li class="default
+                         ">
+                <a href="#">Home</a>
+              </li>
+              <li>
+                <a href="#">Produtos</a>
+              </li>
+              <li>
+                <a href="#">Sincronizar</a>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle dropdown-menu-right" data-toggle="dropdown" role="button" aria-expanded="false" contenteditable="false">Trocar Loja&nbsp;<i class="et-down fa fa-flip-horizontal fa-rotate-90 text-primary fa-angle-double-down"></i></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li>
+                    <a href="#" contenteditable="true">ComistoreV</a>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                    <a href="#" contenteditable="true">Custom Paper</a>
+                  </li>
+                  
+                </ul>
+              </li>
+              <li class="navbar-right">
+                <a href="/logout/">
+                  <i class="fa fa-fw fa-power-off">    
+                  </i>Sair
+                </a>
+                
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class='hidden-xs'>Seja bem vindo, {{user.first_name}}!</h1>
+            <h4 class="hidden-lg hidden-md hidden-sm text-center">Seja bem vindo, {{user.first_name}}!</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h1 class="text-center">Chave de API</h1>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-offset-3 col-md-6">
+                    <form role="form">
+                      <div class="form-group">
+                        <div class="input-group">
+                          <input type="text" class="form-control" placeholder="Insira sua Chave de API"
+                          disabled="disabled">
+                          <span class="input-group-btn">
+                            <a class="btn btn-success" type="submit">Ok</a>
+                          </span>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section text-center">
+      <p class="text-muted size" style="font-size:20px">Veja os dados de sua loja:</p>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-left" style="font-size:25px>
+            <ul class=" list-group="" "=" ">
+              <li class="list-group-item ">Loja: ComicstoreV</li>
+              <li class="list-group-item ">Produtos sincronizados: 100</li>
+              <li class="list-group-item ">Data da última sincronização: 20/05/2016</li>
+              <li class="list-group-item ">Data da última Importação: 30/06/2016</li>
+              <li class="list-group-item ">Erros: 0</li>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+</body></html>
