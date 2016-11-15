@@ -1,15 +1,84 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title> {% block title %}{% endblock %} </title>
-	<link href="/static/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="/static/js/bootstrap.min.js"></script>
-	
-	{% block content %}{% endblock %}
 
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</script>
+	<script src="/static/js/bootstrap.min.js"></script>
+	  <div class="section">
+		<title> {% block title %}{% endblock %} </title>
+		<link href="/static/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style='background:#f4f4f2'>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <ul class="nav nav-pills">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle dropdown-menu-right" data-toggle="dropdown"
+                role="button" aria-expanded="false">
+                {% if user.conta != null %}
+                Home&nbsp;
+                {% else %}
+                {{user.conta.id}}
+                {% endif %}
+                <i class="et-down fa fa-flip-horizontal fa-rotate-90 text-primary fa-caret-down"></i></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li>
+                    <a href="#"><i class="fa fa-fw fa-user"></i>Minha Conta</a>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                    <a href="#"><i class="fa fa-fw fa-plus"></i>
+                                            Adicionar Loja
+                                        </a>
+                  </li>
+                  <li class="divider"></li>
+                  <li class="dropdown-header">
+                    <p>
+                      <i disabled="disabled" class="fa fa-fw fa-exchange"></i>Trocar Loja</p>
+                  </li>
+                  <li>
+                    <a href="#">ComistoreV</a>
+                  </li>
+                  <li>
+                    <a href="#">Custom Paper</a>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                    <a href="/logout"><i class="fa fa-fw fa-power-off"></i>Sair</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">Produtos</a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-fw fa-refresh"></i>Sincronizar</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+	{% block content %}{% endblock %}
+	<div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <p class="text-muted" contenteditable="false">EasyImport®</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
 </body>
