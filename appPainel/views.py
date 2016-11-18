@@ -9,7 +9,7 @@ from django.http import HttpResponse
 from appPainel.forms import LoginForm
 from django.contrib.auth.models import User
 from appPainel.sincronizador import Sincronizador
-from appPainel.models import Conta, Categoria
+from appPainel.models import Conta, Categoria, Plataforma
 def index(request):
     
     return render(request, 'landingPage.html')
@@ -39,9 +39,21 @@ def logar(request):
 
 @login_required
 def home(request):
-    user=request.user
-    conta=Conta.objects.get(user=int(user.id))
-    return render(request,'appPainel/home.html',{'chave_api':conta.chave_api})
+    user=User.objects.get(id=request.user.id)
+
+    conta=Conta.objects.get(user=user.id)#Por algum motivo o user.id tá retornando long
+                                              #Por isso converti pra INT
+    
+    return render(request,'appPainel/home.html',
+            {
+                'chave_api':conta.chave_api,
+                #'plataforma':plataforma.plataforma_nome,
+
+
+
+            }
+        )
+
 
 
 def sair(request):
