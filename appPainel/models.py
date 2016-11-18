@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
@@ -32,7 +33,7 @@ class Categoria(models.Model):
 	conta_id=models.ForeignKey(Conta)
 	nome=models.CharField(max_length=50)
 	descricao=models.TextField()
-	categoria_pai_resource_uri=models.CharField(max_length=100)
+	categoria_pai_resource_uri=models.CharField(max_length=100, null=True)
 	resource_uri=models.CharField(max_length=100)
 	seo=models.CharField(max_length=100)
 	url=models.URLField(verify_exists='false')

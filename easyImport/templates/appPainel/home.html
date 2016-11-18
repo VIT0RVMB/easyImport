@@ -2,16 +2,6 @@
 {% block title %}EasyImport{% endblock %}
 
 {%block content %}
-        <div class="section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="hidden-xs">Seja bem vindo, {{user.first_name}}!</h1>
-                        <h4 class="hidden-lg hidden-md hidden-sm text-center">Seja bem vindo, {{user.first_name}}!</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="section section-info">
             <div class="container">
                 <div class="row">
@@ -28,7 +18,7 @@
                                         <form role="form">
                                             <div class="form-group">
                                                 <div class="input-group">
-                                                    <input type="text" class="form-control" placeholder="Insira sua Chave de API" disabled="disabled">
+                                                    <input type="text" class="form-control" placeholder="Insira sua Chave de API" disabled="disabled" value='{{chave_api}}'>
                                                     <span class="input-group-btn">
                                                         <a class="btn btn-success" type="submit">Ok</a>
                                                     </span>

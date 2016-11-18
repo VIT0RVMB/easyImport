@@ -20,5 +20,6 @@ urlpatterns = patterns('',
     url(r'^$', 'appPainel.views.index', name='appPainel_index'),
     url(r'^home/$', 'appPainel.views.home', name='appPainel_home'),
     url(r'^logout/$', 'appPainel.views.sair', name='appPainel_sair'),
+    url(r'^sync/$', 'appPainel.views.sincronizar', name='appPainel_sincronizar'),
 
 )

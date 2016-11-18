@@ -1,5 +1,6 @@
+# -*- coding:utf-8 -*-
 from django.db import models
-from appPainel import Plataforma, Conta, Categoria
+from appPainel.models import Plataforma, Conta, Categoria
 import requests
 import json
 
@@ -11,17 +12,18 @@ class Sincronizador(models.Model):
 	categorias_sincronizadas=models.IntegerField(null=True)
 
 
-	def sincronizar_categorias(plataforma_id, conta_id, offset=0):
-		plataforma=Plataforma.objects.get(plataforma_id=id)
-		conta=Conta.objects.get(conta_id=id)
+	def sincronizar_categorias(request,id, offset=0):
+		conta=Conta.objects.get(id=id)
 		
-		request=requests.get(plataforma.endpoint
-			+'?chave_api='+plataforma.chave_api
-			+'&chave_aplicacao='+plataforma.chave_aplicacao
+		plataforma=Plataforma.objects.get(id=conta.plataforma_id)
+		
+		request=requests.get(plataforma.plataforma_url_api+'categoria'
+			+'?chave_api='+conta.chave_api
+			+'&chave_aplicacao='+plataforma.plataforma_chave_aplicacao
 			+'&offset='+str(offset))
 		conteudo_json=str(request.content)
 		conteudo_json=json.loads(conteudo_json)
-		for i in conteudo_json['object']:
+		for i in conteudo_json['objects']:
 			if Categoria.objects.filter(plataforma_id=i['id']):
 				categoria=Categoria.objects.get(plataforma_id=i['id'])
 			else:
@@ -30,18 +32,20 @@ class Sincronizador(models.Model):
 			categoria.nome=i['nome']
 			categoria.plataforma_id=i['id']
 			categoria.categoria_pai_resource_uri=i['categoria_pai']
-			if not categoria.categoria_pai_resource_uri==null:
+			if not categoria.categoria_pai_resource_uri==None:
 				categoria.pai_id=categoria.categoria_pai_resource_uri[18:]
-
+			else:
+				pass
 			categoria.resource_uri=i['resource_uri']
 			categoria.seo=i['seo']
 			categoria.url=i['url']
-			categoria.conta_id=conta.id
+			categoria.conta_id=conta
+			categoria.save()
 
 			#Recursividade para Paginação 
 			if conteudo_json['meta']['next']!=None:
 				new_offset+=conteudo_json['meta']['limit']
-				sincronizar_categorias(plataforma_id, conta_id, new_offset)
+				sincronizar_categorias(plataforma_id, conta_id, int(new_offset))
 
 
 
