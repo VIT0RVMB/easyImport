@@ -1,2 +1,5 @@
 # easyImport
-EasyImport - Sistema de importação de produtos em massa para Loja Integrada
+EasyImport - Sistema de gerenciamento/alteração de estoque e precificação de Produtos para seu E-commerce.
+
+
+
