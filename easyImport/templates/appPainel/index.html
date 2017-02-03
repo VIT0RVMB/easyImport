@@ -1,6 +1,6 @@
-
 <html>
-<head>
+  
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -10,61 +10,56 @@
     <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
     rel="stylesheet" type="text/css">
   </head>
-<!--<form method="post">{%csrf_token %}
-	<div class="form-group" style="width:200px; height:100px; margin:auto; margin-top:100px">
-	{{form.as_p}}
-	<input type='hidden' name='next' value={{next}} />
-	<button type='submit' class="btn btn-default">Entrar</button>
-
-	</div>
-</form>-->
-
   
   <body>
-    <div class="cover">
-      <div class="navbar navbar-default">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#"><span>EasyImport</span></a>
-          </div>
-          <div class="collapse navbar-collapse" id="navbar-ex-collapse">
-            <ul class="nav navbar-nav navbar-right">
-              <li class="active">
-                <a href="#">Home</a>
-              </li>
-              <li>
-                <a href="#">Contacts</a>
-              </li>
-            </ul>
-          </div>
+    <div class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><span>EasyImport</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="#">Contacts</a>
+            </li>
+          </ul>
         </div>
       </div>
-      <div class="cover-image"></div>
+    </div>
+    <div class="section">
       <div class="container">
         <div class="row">
-          <div class="col-md-12 text-center">
-            <h1>Login</h1>
-            <p>
-              <br>
-              <br>
-            </p>
-            <form role="form" method='post'>
-              <div class="form-group" style="margin:auto; width:350px">
-                               <!--<input class="form-control input-lg" id="exampleInputEmail1"
-                placeholder="Insira seu E-mail" type="email">-->
-                {{form.as_p}} {%csrf_token %}
-                <input type="submit" class="btn btn-lg btn-success" value="Login">
+          <div class="col-md-12">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title text-success">Login</h3>
               </div>
-            </form>
-            <br>
-            <br>
-            
+              <div class="panel-body">
+                <form role="form" method="POST" style="width:330px; float:left">
+                  {{form.as_p}} {% csrf_token %}
+                  
+                  <button type="submit" class="btn btn-default">Entrar</button>
+                </form>
+
+
+                <!--FORM DA DIREITA -->
+                <form role="form" style="width:330px; float:right;margin-right:50px" class="hidden-xs">
+                <h2>Ainda não é Cadastrado?<a href="/">Registrar-se!</a></h2>
+
+                </form>
+              </div>
+            </div>
+            <div align="center">
+              <p class="hidden-lg hidden-md hidden-sm">
+                <a>Clique aqui para se registrar!</a>
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -73,15 +68,11 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 text-center">
-            <p class="text-muted" contenteditable="true">Produto Multicriar</p>
+            <p class="text-muted" contenteditable="false">EasyImport®</p>
           </div>
         </div>
       </div>
     </div>
   </body>
-
-</html>
-
-
 
 </html>

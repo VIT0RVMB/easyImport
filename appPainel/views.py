@@ -12,7 +12,7 @@ from appPainel.sincronizador import Sincronizador
 from appPainel.models import Conta, Categoria, Plataforma
 def index(request):
     
-    return render(request, 'landingPage.html')
+    return render(request, 'appPainel/register.html')
 
 
 
@@ -39,20 +39,17 @@ def logar(request):
 
 @login_required
 def home(request):
-    user=User.objects.get(id=request.user.id)
-
-    conta=Conta.objects.get(user=user.id)#Por algum motivo o user.id tá retornando long
-                                              #Por isso converti pra INT
     
-    return render(request,'appPainel/home.html',
-            {
-                'chave_api':conta.chave_api,
-                #'plataforma':plataforma.plataforma_nome,
+    
+     return render(request,'appPainel/home.html',
+             {
+                 'chave_api': '7c5a8002-2b27-49c4-9ccb-b4e317a8b00d ' #str(conta[1].chave_api),
+                 #'plataforma':plataforma.plataforma_nome,
 
 
 
-            }
-        )
+             }
+         )
 
 
 
@@ -64,7 +61,7 @@ def sair(request):
 
 
 def sincronizar(request):
-    conta=Conta.objects.get(id=1)
-    sync=Sincronizador()
+    conta = Conta.objects.get(id=1)
+    sync  = Sincronizador()
     sync.sincronizar_categorias(conta.id, 0)
     return HttpResponseRedirect(reverse('appPainel_home'))
