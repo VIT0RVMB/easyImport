@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate
 
 
 class LoginForm(forms.Form):
-   
+
     required_css_class = "error-class"
     error_css_class    = "error-class"
 
@@ -52,11 +52,12 @@ class LoginForm(forms.Form):
         return authenticate(username = username, password = password)
 
 
-
+# Formulário de Registro.
 class RegisterForm(forms.Form):
     # TODO: Define form fields here
     required_css_class = "error-class"
     error_css_class    = "error-class"
+
 
     username           = forms.EmailField(
         label          = 'E-mail',
@@ -66,7 +67,6 @@ class RegisterForm(forms.Form):
                 'class':'form-control',
                 'style':'width:300px',
                 'placeholder':'insira seu e-mail'
-
 
             })
     )
@@ -96,13 +96,31 @@ class RegisterForm(forms.Form):
             })
     )
 
+    plataforma  = forms.ChoiceField(
+        label   = 'Plataforma',
+        choices =[('opt', 'Selecione sua Plataforma'),('opt1', 'Loja Integrada')],
+        widget = forms.Select(attrs={
+            'onChange':'teste()',
+            'id'      : 'combo',
+            'class'   : "form-control",
+            'style'   : "width:300px"
+        })
+
+    )
+
+
+
+
+
+
     conta_nome          = forms.CharField(
         label           = 'Loja',
         max_length      = 30,
         widget          = forms.TextInput(attrs=
             {
+                'id'          : 'loja',
                 'class'       : "form-control",
-                'style'       : "width:300px",
+                'style'       : "width:300px; display:none",
                 'placeholder' : 'Insira o nome da sua loja'
 
             })
@@ -115,8 +133,28 @@ class RegisterForm(forms.Form):
             {
                 'id'         : 'chave_api',
                 'class'      : "form-control",
-                'style'      : "width:300px; display:none",
+                'style'      : "width:300px;display:none",
                 'placeholder': 'Insira a chave de API'
 
             })
     )
+
+
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        if User.objects.filter(username = username):
+            raise forms.ValidationError(u'E-mail já cadastrado.')
+        return username
+
+
+    def clean_conf_password(self):
+        conf_password = self.cleaned_data.get('conf_password')
+        if self.cleaned_data.get('password') != conf_password:
+            raise forms.ValidationError(u'Senhas não conferem')
+        return conf_password
+
+
+    def save(self):
+        username = self.cleaned_data.get('username')
+        password = self.cleaned_data.get('password')
+        return authenticate(username = username, password = password)

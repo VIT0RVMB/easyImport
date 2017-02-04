@@ -11,7 +11,14 @@
     rel="stylesheet" type="text/css">
   </head>
   
-  <body>
+  <body onload="desabilita_option();">
+  <script>
+      var desabilita_option = function(){
+        document.querySelector("option[value=opt]").disable=true
+
+      }
+
+  </script>
     <div class="navbar navbar-default navbar-static-top">
       <div class="container">
         <div class="navbar-header">
@@ -42,6 +49,21 @@
               </div>
               <div class="panel-body">
                 <form role="form" style="width:330px; float:left">
+                  {{form.as_p}} {% csrf_token %}
+                  <script>
+                    // Disclaimer: using a library (jquery, ext-core, prototype) to bind events and change
+                    // styles is safer across browsers
+                    var teste=function() {
+
+                      if(document.getElementById('combo').selectedIndex == 1){
+                        document.getElementById('loja').style.display = "inline";
+                        document.getElementById('chave_api').style.display = "inline";
+
+                      }
+
+                    }
+                  </script>
+                  <!--
                   <div class="form-group" style="width:300px">
                     <label class="control-label" for="exampleInputEmail1">Email</label>
                     <input class="form-control" id="exampleInputEmail1" placeholder="Enter email"
@@ -75,19 +97,8 @@
                       <input class="form-control" id="exampleInputPassword1"
                       placeholder="Insira sua chave de API" type="text">
                     </div>
-                  </div>
-                  <script>
-                    // Disclaimer: using a library (jquery, ext-core, prototype) to bind events and change 
-                    // styles is safer across browsers
-                    var teste=function() {
-                     
-                      if(document.getElementById('combo').selectedIndex == 1){
-                        document.getElementById('grupo-escondido').style.display = "inline";
-                        
-                      }
-                      
-                    }
-                  </script>
+                  </div> -->
+
                   <div class="form-group">
                     <button type="submit" class="btn btn-default">Cadastrar</button>
                   </div>

@@ -32,12 +32,14 @@ class Categoria(models.Model):
     plataforma_id               = models.IntegerField(null = True, unique = True)
     pai_id                      = models.IntegerField(null = True)
     conta_id                    = models.ForeignKey(Conta)
-    nome                        = models.CharField(max_length = 50)
+    categoria_nome                        = models.CharField(max_length = 50)
     descricao                   = models.TextField()
     categoria_pai_resource_uri  = models.CharField(max_length = 100, null = True)
     resource_uri                = models.CharField(max_length = 100)
     seo                         = models.CharField(max_length = 100)
     url                         = models.URLField(verify_exists = 'false')
+
+
 
     def __unicode__(self):
         return self.categoria_nome
